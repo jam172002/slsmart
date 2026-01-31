@@ -50,12 +50,12 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
         // 🔹 LOGO AT START
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: ClipOval(
             child: Image.asset(
               'assets/logo_transparent.png',
-              width: 36,
-              height: 36,
+              width: 40,
+              height: 40,
               fit: BoxFit.cover,
             ),
           ),
@@ -68,7 +68,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
-            fontSize: 18,
+            fontSize: 22,
           ),
         ),
 
