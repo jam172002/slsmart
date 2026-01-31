@@ -1,4 +1,4 @@
-import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -44,14 +44,43 @@ class _WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("slsmarts.com"),
+        backgroundColor: const Color(0xFF1D3146),
+        elevation: 0,
+        centerTitle: true,
+
+        // 🔹 LOGO AT START
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ClipOval(
+            child: Image.asset(
+              'assets/logo_transparent.png',
+              width: 36,
+              height: 36,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+
+        // 🔹 CENTER TITLE
+        title: const Text(
+          'slsmarts.com',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+        ),
+
+        // 🔹 RIGHT ACTIONS
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh, color: Colors.white),
             onPressed: () => controller.reload(),
           ),
         ],
       ),
+
       body: RefreshIndicator(
         onRefresh: () async {
           await checkInternet();
@@ -65,29 +94,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () async {
-                if (await controller.canGoBack()) {
-                  controller.goBack();
-                }
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.arrow_forward),
-              onPressed: () async {
-                if (await controller.canGoForward()) {
-                  controller.goForward();
-                }
-              },
-            ),
-          ],
-        ),
-      ),
+
     );
   }
 }
